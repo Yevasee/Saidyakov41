@@ -23,6 +23,10 @@ namespace Saidyakov41
         public PageProduct()
         {
             InitializeComponent();
+
+            var currentProducts = Saidyakov41Entities.GetContext().Product.ToList();
+
+            ListViewProduct.ItemsSource = currentProducts;
         }
 
         private void btnGo_Click(object sender, RoutedEventArgs e)

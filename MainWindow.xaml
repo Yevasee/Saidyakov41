@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Saidyakov41"
         mc:Ignorable="d"
-        Title="Сайдяков 41 размер" Height="450" Width="800" MinHeight="450" MinWidth="800" Icon="res/icon.ico" FontFamily="Comic Sans MS">
+        Title="Сайдяков 41 размер" Height="450" Width="800" MinHeight="450" MinWidth="800" Icon="imagesDefault/icon.ico" FontFamily="Comic Sans MS">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
@@ -13,7 +13,7 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <Image Source="res/logo.png" HorizontalAlignment="Left"></Image>
+        <Image Source="imagesDefault/logo.png" HorizontalAlignment="Left"></Image>
         <TextBlock Text="41 размер" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         <Button Content="Назад" Name="BtnBack" HorizontalAlignment="Right" Click="BtnBack_Click"></Button>
         <Frame Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1" ContentRendered="MainFrame_ContentRendered"></Frame>
