@@ -10,13 +10,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
         <Image Source="imagesDefault/logo.png" HorizontalAlignment="Left"></Image>
         <TextBlock Text="41 размер" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <Frame Name="MainFrame" Grid.RowSpan="3" Margin="0,52,0,15" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered"></Frame>
         <Button Content="Назад" Name="BtnBack" HorizontalAlignment="Right" Click="BtnBack_Click"></Button>
-        <Frame Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1" ContentRendered="MainFrame_ContentRendered"></Frame>
-
+        
     </Grid>
 </Window>

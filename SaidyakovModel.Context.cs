@@ -12,7 +12,7 @@ namespace Saidyakov41
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class Saidyakov41Entities : DbContext
     {
         private static Saidyakov41Entities _context;
@@ -27,12 +27,12 @@ namespace Saidyakov41
             : base("name=Saidyakov41Entities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderProduct> OrderProduct { get; set; }
         public virtual DbSet<PickUpPoint> PickUpPoint { get; set; }

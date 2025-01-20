@@ -171,16 +171,6 @@
     <Resource Include="imagesDefault\picture.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SaidyakovModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SaidyakovModel.Context.cs</LastGenOutput>
-      <DependentUpon>SaidyakovModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="SaidyakovModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SaidyakovModel.edmx</DependentUpon>
-      <LastGenOutput>SaidyakovModel.cs</LastGenOutput>
-    </Content>
     <Resource Include="imagesProduct\B320R5.jpg" />
     <Resource Include="imagesProduct\D329H3.jpg" />
     <Resource Include="imagesProduct\D572U8.jpg" />
@@ -194,6 +184,18 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SaidyakovModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SaidyakovModel.edmx</DependentUpon>
+      <LastGenOutput>SaidyakovModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SaidyakovModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SaidyakovModel.edmx</DependentUpon>
+      <LastGenOutput>SaidyakovModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
