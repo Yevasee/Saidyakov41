@@ -23,7 +23,7 @@ namespace Saidyakov41
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new PageProduct());
+            MainFrame.Navigate(new PageAuth());
             Manager.MainFrame = MainFrame;
         }
 

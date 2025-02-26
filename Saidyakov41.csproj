@@ -70,6 +70,9 @@
     <Compile Include="OrderProduct.cs">
       <DependentUpon>SaidyakovModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PageAuth.xaml.cs">
+      <DependentUpon>PageAuth.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PickUpPoint.cs">
       <DependentUpon>SaidyakovModel.tt</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PageAddEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageAuth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

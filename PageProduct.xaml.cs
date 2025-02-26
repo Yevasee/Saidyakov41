@@ -25,9 +25,21 @@ namespace Saidyakov41
         int CurrentPage = 0;
         List<Product> CurrentPageList = new List<Product>();
         List<Product> TableList;
-        public PageProduct()
+        public PageProduct(User user=null)
         {
             InitializeComponent();
+
+            if (user == null)
+            {
+                TextBlockFIO.Text = "гость";
+                TextBlockRole.Text = "Гость";
+            }
+            else
+            {
+                TextBlockFIO.Text = user.UserSurname + " " + user.UserName + " " + user.UserPatronymic;
+                TextBlockRole.Text = user.Role.RoleName;
+            }
+
 
             var currentProducts = Saidyakov41Entities.GetContext().Product.ToList();
             ComboTypeFilter.SelectedIndex = 0;
