@@ -23,8 +23,11 @@ namespace Saidyakov41
         int CountRecords;
         int CountPage;
         int CurrentPage = 0;
+        List<OrderProduct> selectedOrderProducts = new List<OrderProduct>();
         List<Product> CurrentPageList = new List<Product>();
         List<Product> TableList;
+        private string userFullName;
+        private User currentUser;
         public PageProduct(User user=null)
         {
             InitializeComponent();
@@ -36,6 +39,7 @@ namespace Saidyakov41
             }
             else
             {
+                currentUser = user; //добаленная строчка
                 TextBlockFIO.Text = user.UserSurname + " " + user.UserName + " " + user.UserPatronymic;
                 TextBlockRole.Text = user.Role.RoleName;
             }
@@ -97,6 +101,69 @@ namespace Saidyakov41
         private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateProducts();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (ListViewProduct.SelectedIndex >= 0)
+            {
+
+                int newOrderID = Saidyakov41Entities.GetContext().Order.OrderByDescending(p => p.OrderID).First().OrderID + 1;
+
+                foreach (Product prod in ListViewProduct.SelectedItems)
+                {
+
+                    //var prod = ListViewProduct.SelectedItem as Product;
+                    CurrentPageList.Add(prod);
+
+                    var newOrderProd = new OrderProduct();
+                    newOrderProd.OrderID = newOrderID;
+
+                    newOrderProd.ProductArticleNumber = prod.ProductArticleNumber;
+                    newOrderProd.ProductCount = 1;
+                    newOrderProd.tempCountOfOrderProductForWindowOrder = 1;
+
+                    var selOP = selectedOrderProducts.Where(p => Equals(p.ProductArticleNumber, prod.ProductArticleNumber));
+
+                    if (selOP.Count() == 0)
+                    {
+                        selectedOrderProducts.Add(newOrderProd);
+                    }
+                    else
+                    {
+                        foreach (OrderProduct p in selectedOrderProducts)
+                        {
+                            if (p.ProductArticleNumber == prod.ProductArticleNumber)
+                            {
+                                p.ProductCount++;
+                                p.tempCountOfOrderProductForWindowOrder++;
+                            }
+                        }
+                    }
+
+                    decimal prodPriceWithDiscount = prod.ProductCost - prod.ProductCost / 100 * (decimal)prod.ProductDiscountAmount;
+                    BasketPrice.increaseCost(prodPriceWithDiscount);
+
+                }
+
+                OrderBtn.Visibility = Visibility.Visible;
+                ListViewProduct.SelectedIndex = -1;
+            }
+        }
+
+        private void OrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentPageList = CurrentPageList.Distinct().ToList();
+            WindowOrder windowOrder = new WindowOrder(selectedOrderProducts, CurrentPageList, TextBlockFIO.Text, currentUser);
+            windowOrder.ShowDialog();
+
+            if (windowOrder.isSaved)
+            {
+                OrderBtn.Visibility = Visibility.Hidden;
+                CurrentPageList.Clear();
+                selectedOrderProducts.Clear();
+            }
         }
     }
 }

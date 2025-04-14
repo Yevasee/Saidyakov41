@@ -25,7 +25,15 @@ namespace Saidyakov41
         public string City { get; set; }
         public string Street { get; set; }
         public string House { get; set; }
-    
+
+        public string PickUpPointFullAddress
+        {
+            get
+            {
+                return Index + ", " + City + ", " + Street + ", " + House;
+            }
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
     }

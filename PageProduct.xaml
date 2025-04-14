@@ -15,6 +15,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        
         <StackPanel Orientation="Vertical" Grid.Row="0">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Вы авторизованы как " FontSize="15"/>
@@ -53,9 +54,15 @@
                 <TextBlock Name="TBCount" FontSize="20" Height="30"/>
                 <TextBlock Name="TBAllRecords" FontSize="20" Height="30"/>
             </StackPanel>
+            <Button Name="OrderBtn" Click="OrderBtn_Click"  Visibility="Hidden" Content="Заказ"/>
         </StackPanel>
-        
+
         <ListView Name="ListViewProduct" Grid.Row="2" Grid.ColumnSpan="3" Margin="10">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Добавить к заказу" Click="MenuItem_Click"></MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>

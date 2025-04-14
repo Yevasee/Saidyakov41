@@ -42,6 +42,7 @@ namespace Saidyakov41
             }
         }
         public string ProductStatus { get; set; }
+        public int tempCountOfProductForWindowOrder { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderProduct> OrderProduct { get; set; }
